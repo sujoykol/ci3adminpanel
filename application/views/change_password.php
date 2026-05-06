@@ -6,6 +6,7 @@
 	</div>
 	<div class="card-body">
 		<form method="post">
+			<?= csrf_field(); ?>
 			<input type="password" class="form-control" name="current_password" placeholder="Current Password" required><br>
 			<input type="password" class="form-control" name="new_password" placeholder="New Password" required><br>
 			<input type="password" class="form-control" name="confirm_password" placeholder="Confirm New Password" required><br>

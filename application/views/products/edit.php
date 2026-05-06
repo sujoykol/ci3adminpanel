@@ -1,11 +1,22 @@
 <section class="content">
 	<div class="container-fluid">
-		<h2>Edit Product</h2>
+		<h2><?= $title ?></h2>
 		<form method="post" enctype="multipart/form-data">
+			<?= csrf_field(); ?>
 			<div class="form-group">
 				<label>Name</label>
 				<input type="text" name="name" value="<?= $product->name ?>" class="form-control">
 			</div>
+			<div class="form-group">
+				<label>Category</label>
+				<select name="category" class="form-control">
+					<option value="">Select Category</option>
+					<?php foreach ($all_category as $category): ?>
+						<option value="<?= $category->id ?>" <?= $category->id == $product->catid ? 'selected' : '' ?>>
+							<?= $category->name ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
 			<div class="form-group">
 				<label>Description</label>
 				<textarea name="description" class="form-control"><?= $product->description ?></textarea>

@@ -29,8 +29,14 @@
 				<?php if (isset($error)): ?>
 					<div class="alert alert-danger"><?= $error ?></div>
 				<?php endif; ?>
+				<?php if ($this->session->flashdata('success')): ?>
+				<div class="alert alert-success">
+					<?= $this->session->flashdata('success'); ?>
+				</div>
+			<?php endif; ?>
 
 				<form method="post">
+					<?= csrf_field(); ?>
 					<div class="input-group mb-3">
 						<input type="text" name="username" class="form-control" placeholder="Username" required>
 						<div class="input-group-append">

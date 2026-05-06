@@ -60,14 +60,24 @@ $route['login']                 = 'auth/login';
 $route['logout']                = 'auth/logout';
 
 // Dashboard
-$route['dashboard']             = 'auth/dashboard';
+$route['dashboard']             = 'dashboard';
 
 // Change Password
-$route['change-password']       = 'auth/change_password';
+$route['change-password']       = 'dashboard/change_password';
 
 $route['products']              = 'product/index';        // list with pagination
-$route['products/create']       = 'product/create';       // create form
+$route['product-create']       = 'product/create';       // create form
 $route['products/store']        = 'product/store';        // save new product
 $route['products/edit/(:num)']  = 'product/edit/$1';      // edit form
 $route['products/update/(:num)'] = 'product/update/$1';   // update product
 $route['products/delete/(:num)'] = 'product/delete/$1';   // delete product
+
+$route['category'] = 'category/index';
+$route['category/create'] = 'category/create';
+$route['category/edit/(:num)'] = 'category/edit/$1';
+$route['category/delete/(:num)'] = 'category/delete/$1';
+
+$route['sub-category'] = 'subcategory/index';
+$route['sub-category/create'] = 'subcategory/create';
+$route['sub-category/edit/(:num)'] = 'subcategory/edit/$1';
+$route['sub-category/delete/(:num)'] = 'subcategory/delete/$1';

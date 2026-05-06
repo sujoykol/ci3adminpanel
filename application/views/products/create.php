@@ -1,10 +1,20 @@
 <section class="content">
 	<div class="container-fluid">
-		<h2>Add Product</h2>
+		<h2><?= $title ?></h2>
 		<form method="post" enctype="multipart/form-data">
+			<?= csrf_field(); ?>
 			<div class="form-group">
 				<label>Name</label>
 				<input type="text" name="name" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Category</label>
+				<select name="category" class="form-control">
+					<option value="">Select Category</option>
+					<?php foreach ($all_category as $category): ?>
+						<option value="<?= $category->id ?>"><?= $category->name ?></option>
+					<?php endforeach; ?>
+				</select>
 			</div>
 			<div class="form-group">
 				<label>Description</label>

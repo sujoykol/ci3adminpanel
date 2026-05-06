@@ -36,6 +36,18 @@
 								<p>Dashboard</p>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="<?= site_url('category') ?>" class="nav-link">
+								<i class="nav-icon fas fa-tachometer-alt"></i>
+								<p>Category</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= site_url('sub-category') ?>" class="nav-link">
+								<i class="nav-icon fas fa-tachometer-alt"></i>
+								<p>Sub Category</p>
+							</a>
+						</li>
 
 						<li class="nav-item">
 							<a href="<?= site_url('products') ?>" class="nav-link">
