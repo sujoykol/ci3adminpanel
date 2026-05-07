@@ -55,6 +55,12 @@
 								<p>Products</p>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="<?= site_url('banner') ?>" class="nav-link">
+								<i class="nav-icon fas fa-tachometer-alt"></i>
+								<p>Banners</p>
+							</a>
+						</li>
 
 						<li class="nav-item">
 							<a href="<?= site_url('change-password') ?>" class="nav-link">

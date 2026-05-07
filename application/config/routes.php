@@ -81,3 +81,9 @@ $route['sub-category'] = 'subcategory/index';
 $route['sub-category/create'] = 'subcategory/create';
 $route['sub-category/edit/(:num)'] = 'subcategory/edit/$1';
 $route['sub-category/delete/(:num)'] = 'subcategory/delete/$1';
+
+$route['banner'] = 'banner/index';
+$route['banner/create'] = 'banner/create';
+$route['banner/edit/(:num)'] = 'banner/edit/$1';
+$route['banner/delete/(:num)'] = 'banner/delete/$1';
+

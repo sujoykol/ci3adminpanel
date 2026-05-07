@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2025 at 08:50 AM
+-- Generation Time: May 07, 2026 at 06:04 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,12 +24,59 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `banners`
+--
+
+CREATE TABLE `banners` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `status` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`id`, `name`, `image`, `status`, `created_at`) VALUES
+(4, '445', '1778126569.png', 1, '2026-05-06 16:36:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `status` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `status`, `created_at`) VALUES
+(8, 'Women', 1, '2026-02-09 09:14:49'),
+(9, 'Men', 1, '2026-02-09 13:53:32'),
+(10, 'Child', 1, '2026-02-10 07:47:26'),
+(11, 'Electronic ', 1, '2026-02-10 07:54:20'),
+(12, 'Mobile', 1, '2026-02-11 11:28:45'),
+(15, 'hhhh123', 1, '2026-05-06 08:59:21');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `catid` int(11) NOT NULL,
   `description` text DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
@@ -40,13 +87,36 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `created_at`) VALUES
-(2, 'sujoy garai', 'dddd  jjjjj', 12.00, '1756731340.png', '2025-09-01 12:55:40'),
-(3, 'gggg', 'ffff', 56.00, '1756731371.jpg', '2025-09-01 12:56:11'),
-(4, 'hhh', 'fff', 56.00, '1756731386.jpg', '2025-09-01 12:56:26'),
-(5, 'ffff', 'fff', 34.00, '1756731541.png', '2025-09-01 12:59:01'),
-(6, 'gggg', 'ddddd', 67.00, '1756731555.png', '2025-09-01 12:59:15'),
-(7, 'hhhfdd', 'ffdsfds', 44.00, '1756731571.png', '2025-09-01 12:59:31');
+INSERT INTO `products` (`id`, `name`, `catid`, `description`, `price`, `image`, `created_at`) VALUES
+(10, 'women products', 8, 'wemen products   are  not expensiv', 45.00, '1770709490.jpg', '2026-02-10 07:44:51'),
+(13, 'Child Product', 10, 'Child Product  is here', 45.00, '1770711131.jpg', '2026-02-10 07:47:59'),
+(16, 'admin', 10, 'hhh', 67.00, '1770714635.jpg', '2026-02-10 09:10:35'),
+(17, 'sujoy garai', 10, 'sadsad', 45.00, '1777640608.jpg', '2026-05-01 13:03:28'),
+(18, 'test', 9, 'dfsdf', 67.00, '1777640632.png', '2026-05-01 13:03:52'),
+(19, 'tryty', 12, 'It is a test product', 56.00, '1777640657.jpg', '2026-05-01 13:04:17'),
+(20, 'demo 5555', 11, 'demo 555', 45.00, '1778073758.png', '2026-05-06 13:22:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subcategories`
+--
+
+CREATE TABLE `subcategories` (
+  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `status` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subcategories`
+--
+
+INSERT INTO `subcategories` (`id`, `category_id`, `name`, `status`, `created_at`) VALUES
+(2, 12, 'Sumsung', 0, '2026-05-06 09:42:47'),
+(3, 11, 'Computer', 1, '2026-05-06 09:54:18');
 
 -- --------------------------------------------------------
 
@@ -65,16 +135,34 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'admin', '$2y$10$Kb18tEtVdFaJ4eJRMWpOpO6feyC0UJ0qXkH2qGsq7yEV2vOs3igDW');
+(1, 'admin', '$2y$10$ewzPcSdEfpPDU0xtkoOK3.UCcpmgIEz1WYEt1g5CPQRiehByNM4C6');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `banners`
+--
+ALTER TABLE `banners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subcategories`
+--
+ALTER TABLE `subcategories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -89,10 +177,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `banners`
+--
+ALTER TABLE `banners`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `subcategories`
+--
+ALTER TABLE `subcategories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
