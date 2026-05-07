@@ -7,7 +7,7 @@ class Auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('User_model');
+		//$this->load->model('User_model');
 		/*$this->load->library('session');
 		$this->load->helper(['url', 'form']);*/
 	}
@@ -37,8 +37,7 @@ class Auth extends CI_Controller
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		$this->session->set_flashdata('success', 'Logged out successfully.');
-		redirect('auth/login');
+		return redirect()->to('/auth/login');
 	}
 
 	

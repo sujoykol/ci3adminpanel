@@ -87,3 +87,8 @@ $route['banner/create'] = 'banner/create';
 $route['banner/edit/(:num)'] = 'banner/edit/$1';
 $route['banner/delete/(:num)'] = 'banner/delete/$1';
 
+$route['customer'] = 'customer/index';
+$route['customer/create'] = 'customer/create';
+$route['customer/edit/(:num)'] = 'customer/edit/$1';
+$route['customer/delete/(:num)'] = 'customer/delete/$1';
+

@@ -128,7 +128,13 @@ class Banner extends MY_Controller {
 
 		// DELETE
 		public function delete($id) {
+			 $banner = $this->Banner_model->get($id);
+			  if (file_exists('./uploads/banners/' . $banner->image)) {
+                        @unlink('./uploads/banners/' . $banner->image);
+                    }
+			
 			if ($this->Banner_model->delete($id)) {
+				
 				$this->session->set_flashdata('success', 'Banner deleted successfully.');
 			} else {
 				$this->session->set_flashdata('error', 'Something went wrong, please try again.');

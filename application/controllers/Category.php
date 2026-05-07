@@ -6,6 +6,8 @@ class Category extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Category_model');
+		$this->load->model('Subcategory_model');
+	
     }
 
     // LIST
@@ -73,8 +75,16 @@ class Category extends MY_Controller {
 
     // DELETE
     public function delete($id) {
+		$subid=$this->Subcategory_model->get_sub_category($id);
+		if($subid->category_id===$id){
+		$this->session->set_flashdata('error', 'This Category can not be deleted.');
+        redirect('category');
+		}
+		else {	
         $this->Category_model->delete($id);
 		$this->session->set_flashdata('success', 'Category deleted successfully.');
         redirect('category');
+		}
+		
     }
 }

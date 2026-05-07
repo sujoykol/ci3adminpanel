@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category_model extends CI_Model {
+class Customer_model extends CI_Model {
 
-    private $table = 'categories';
+    private $table = 'customers';
 
     public function get_all() {
         return $this->db->order_by('id', 'DESC')->get($this->table)->result();
@@ -24,11 +24,6 @@ class Category_model extends CI_Model {
     public function delete($id) {
         return $this->db->where('id', $id)->delete($this->table);
     }
-	public function get_all_category() {
-		return $this->db->where('status',1)->order_by('id', 'DESC')->get($this->table)->result();
-	}
-	
-	
 	
 	
 }

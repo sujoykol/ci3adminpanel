@@ -41,4 +41,8 @@ class Subcategory_model extends CI_Model
             ['id' => $id]
         );
     }
+	public function get_sub_category($id)
+	{
+		return $this->db->where('category_id', $id)->get($this->table)->row();
+	}
 }
