@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2026 at 06:04 AM
+-- Generation Time: May 07, 2026 at 09:00 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `name`, `image`, `status`, `created_at`) VALUES
-(4, '445', '1778126569.png', 1, '2026-05-06 16:36:26');
+(6, '10000', '1778129277.png', 1, '2026-05-07 04:47:34');
 
 -- --------------------------------------------------------
 
@@ -60,12 +60,32 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `status`, `created_at`) VALUES
-(8, 'Women', 1, '2026-02-09 09:14:49'),
 (9, 'Men', 1, '2026-02-09 13:53:32'),
 (10, 'Child', 1, '2026-02-10 07:47:26'),
-(11, 'Electronic ', 1, '2026-02-10 07:54:20'),
-(12, 'Mobile', 1, '2026-02-11 11:28:45'),
-(15, 'hhhh123', 1, '2026-05-06 08:59:21');
+(12, 'Mobile', 1, '2026-02-11 11:28:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(12) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `email`, `address`, `image`, `status`, `created_at`) VALUES
+(3, 'Sujoy Chand Garai', 'sujoygaraikolkata@gmail.com', 'Town school', '1778137053.png', 0, '2026-05-07 06:57:33');
 
 -- --------------------------------------------------------
 
@@ -115,8 +135,8 @@ CREATE TABLE `subcategories` (
 --
 
 INSERT INTO `subcategories` (`id`, `category_id`, `name`, `status`, `created_at`) VALUES
-(2, 12, 'Sumsung', 0, '2026-05-06 09:42:47'),
-(3, 11, 'Computer', 1, '2026-05-06 09:54:18');
+(2, 12, 'Sumsung', 1, '2026-05-06 09:42:47'),
+(3, 12, 'Computer12', 1, '2026-05-06 09:54:18');
 
 -- --------------------------------------------------------
 
@@ -154,6 +174,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -180,13 +206,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
